@@ -5,7 +5,7 @@ Look up japanese text from a screenshot
 Run `./nanisore` and select an area with japanese text.
 
 # Requirements
-- main
+- maim
 - tesseract
 - tesseract-data-jpn
 - chromium (you can change the browser in the script)
