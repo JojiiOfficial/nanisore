@@ -1,0 +1,20 @@
+#/bin/sh
+set -e
+
+maim -s nanisore_a.png -m 10 
+if [ "$?" -eq 1 ];
+then
+  exit
+fi
+
+tesseract -l jpn nanisore_a.png txt
+rm nanisore_a.png
+TEXT=$(cat txt.txt  | sed 's/[ ]//g' | sed -e 's/[^あ-ん一-龯一-龯０-９Ａ-ｚ]*//g')
+rm ./txt.txt
+
+if [ -z "$TEXT" ]; then
+  exit
+fi
+
+echo $TEXT
+chromium "https://jotoba.de/search/$TEXT?t=0"
